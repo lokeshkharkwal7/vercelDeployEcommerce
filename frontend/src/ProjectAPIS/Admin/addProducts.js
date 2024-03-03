@@ -2,7 +2,7 @@
   try {
     
   
-    const response = await fetch("http://localhost:4000/product/create", {
+    const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/product/create", {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
          headers: {
           "Content-Type": "application/json",
