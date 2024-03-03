@@ -1,5 +1,5 @@
 export const addDataToCartMongoDB = async (cartProductArray) => {
-  const response = await fetch("http://localhost:4000/cart/addproducts", {
+  const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/cart/addproducts", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
       "Content-Type": "application/json",
