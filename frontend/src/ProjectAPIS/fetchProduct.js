@@ -10,7 +10,7 @@ export const fetchProducts = async (authToken,category, dispatch) => {
   try {
     
  
-  const response = await fetch(`http://localhost:4000/product/${category}`, {
+  const response = await fetch(`https://vercel-deploy-ecommerce-backend.vercel.app/product/${category}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
