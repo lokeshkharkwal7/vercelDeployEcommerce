@@ -1,7 +1,7 @@
 
 
   export const cartDeleteEverything = async (userId) => {
-    const response = await fetch("http://localhost:4000/cart/deleteproducts/emptycart", {
+    const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/cart/deleteproducts/emptycart", {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
