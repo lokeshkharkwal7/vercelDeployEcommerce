@@ -2,7 +2,7 @@ import { insertUserData, deleteUserData } from "../redux/slicers/fetchUserInfo";
 
 export const fetchUser = async (authToken, dispatch) => {
   try {
-    const response = await fetch("http://localhost:4000/user/fetchUser", {
+    const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/user/fetchUser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
