@@ -50,14 +50,14 @@ function AdminNavbar() {
               </li>
             </ul>
             <button type="button" class="btn btn-light mx-2">
-              <button
+              <div
                 className="text-dark text-decoration-none"
                 onClick={adminLogOut}
               >
                 {" "}
                 <i class="fa-solid fa-right-from-bracket mx-2"></i>
                 EXIT
-              </button>
+              </div>
             </button>
           </div>
         </div>
