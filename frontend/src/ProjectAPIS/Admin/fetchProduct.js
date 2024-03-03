@@ -1,7 +1,7 @@
 export const fetchSellerProducts = async (sellerAuthToken) => {
   try {
     const response = await fetch(
-      "http://localhost:4000/seller/product/fetchall",
+      "https://vercel-deploy-ecommerce-backend.vercel.app/seller/product/fetchall",
       {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         headers: {
