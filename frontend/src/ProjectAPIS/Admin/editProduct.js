@@ -5,7 +5,7 @@ export const editAdminProduct = async (
 ) => {
 
   const response = await fetch(
-    `http://localhost:4000/seller/products/${pname}`,
+    `https://vercel-deploy-ecommerce-backend.vercel.app/seller/products/${pname}`,
     {
       method: "PUT", // *GET, POST, PUT, DELETE, etc.
       headers: {
