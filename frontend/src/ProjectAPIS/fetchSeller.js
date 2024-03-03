@@ -2,7 +2,7 @@
 export const fetchSeller = async (authToken) => {
     try {
         console.log("auth token inside the middleware is : ", authToken)
-      const response = await fetch("http://localhost:4000/seller/fetchseller", {
+      const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/seller/fetchseller", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
