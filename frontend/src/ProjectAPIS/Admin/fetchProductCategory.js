@@ -4,7 +4,7 @@ export const fetchSellerProductsbyCategory = async (
   category,
   dispatch
 ) => {
-  const url = `http://localhost:4000/seller/products/${category}`;
+  const url = `https://vercel-deploy-ecommerce-backend.vercel.app/seller/products/${category}`;
   console.log("url passing in the fetchproductcategory is : ", url);
   try {
     const response = await fetch(url, {
