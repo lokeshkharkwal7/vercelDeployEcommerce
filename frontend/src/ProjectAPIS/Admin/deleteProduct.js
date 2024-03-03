@@ -1,7 +1,7 @@
 import { deleteSellerProductAction } from "../../redux/slicers/fetchSellerProductsSlicer";
 export const deleteSellerProduct = async (pname, authTokenSeller , dispatch) => {
   const response = await fetch(
-    `http://localhost:4000/seller/products/${pname}`,
+    `https://vercel-deploy-ecommerce-backend.vercel.app/seller/products/${pname}`,
     {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       headers: {
