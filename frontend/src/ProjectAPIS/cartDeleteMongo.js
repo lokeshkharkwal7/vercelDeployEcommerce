@@ -1,5 +1,5 @@
  const removeElementFromCartMongoDB = async (pdescription) => {
-  const response = await fetch("http://localhost:4000/cart/deleteproducts", {
+  const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/cart/deleteproducts", {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     headers: {
       "Content-Type": "application/json",
