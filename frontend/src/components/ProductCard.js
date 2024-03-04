@@ -97,7 +97,7 @@ function ProductCard({
 
   return (
     <div>
-      <div className="card-fluid mx-3 my-2" style={{ width: "25rem" }}>
+      <div className="card-fluid mx-3 my-2" style={{ width: "22rem" }}>
         <img
           src={pimages}
           className="card-img-top img-responsive"
