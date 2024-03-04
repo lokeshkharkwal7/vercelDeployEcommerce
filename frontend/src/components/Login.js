@@ -43,7 +43,7 @@ function Login() {
 
   let navigate = useNavigate();
 
-  const host = "http://localhost:4000";
+  const host = "https://vercel-deploy-ecommerce-backend.vercel.app";
 
   // AUTHENTICATING ADMIN
 
