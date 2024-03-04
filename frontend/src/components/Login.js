@@ -164,8 +164,7 @@ function Login() {
       >
         <div className="navbar-brand" href="#">
           <i className="fa-solid fa-store mx-1"></i>
-          Wiz Store-An Online Ecommerce Platform
-          <i className="fa-solid fa-wand-magic-sparkles mx-1"></i>
+          Wiz Store-An Online Ecommerce Platform 
         </div>
       </nav>
 
