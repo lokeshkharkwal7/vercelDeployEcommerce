@@ -61,7 +61,7 @@ function Login() {
         body: JSON.stringify({ semail: adminemail, spassword: adminpassword }), // body data type must match "Content-Type" header
       });
 
-      if (response.ok) {
+      if (response) {
         const auth_token = await response.json(); // parses JSON response into native JavaScript objects
         console.log("response from the adminlogin is : ", auth_token);
         // changeAuthToken(auth_token);
