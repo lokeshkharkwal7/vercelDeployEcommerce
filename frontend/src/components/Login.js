@@ -160,7 +160,7 @@ function Login() {
             I'm Admin <i class="fa-solid fa-user-tie mx-2"></i>
           </button>
           <br></br>
-          <div className="row">
+          <div className="row py-5">
             {/* Image Column */}
             <div className="col-md-4 mb-4">
               <img
@@ -241,7 +241,7 @@ function Login() {
             I'm User <i class="fa-regular fa-user"></i>
           </button>
           <br></br>
-          <div className="row">
+          <div className="row py-5">
             {/* Image Column */}
             <div className="col-md-4 mb-4">
               <img
