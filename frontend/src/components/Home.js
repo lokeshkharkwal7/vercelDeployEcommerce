@@ -9,9 +9,8 @@ import { fetchUser } from "../ProjectAPIS/fetchUser";
 import Navbar from "./Navbar";
 import { fetchCartProduct } from "../ProjectAPIS/fetchCart";
 
-
-function Home({ category = 'Electronics'}) {
-  const dispatch = useDispatch(); 
+function Home({ category = "Electronics" }) {
+  const dispatch = useDispatch();
 
   const authToken = localStorage.getItem("user_auth_token");
 
@@ -20,11 +19,8 @@ function Home({ category = 'Electronics'}) {
   useEffect(() => {
     fetchProducts(authToken, category, dispatch);
     fetchUser(authToken, dispatch);
-    fetchCartProduct(authToken,dispatch)
-
+    fetchCartProduct(authToken, dispatch);
   }, [category]);
-
-   
 
   // Access data from Redux store
   const products = useSelector((state) => {
@@ -33,17 +29,17 @@ function Home({ category = 'Electronics'}) {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <br />
       <br />
 
-      <div className="container-fluid fs-3 text-center bg-primary text-light mt-3">
-        <i className="fa-solid fa-layer-group"></i>
+      <div className="container-fluid fs-4 text-center bg-primary text-light mt-2">
+        <i className="fa-solid fa-layer-group fs-6 mx-2"></i>
         {category}
       </div>
       <div
         className="container-fluid d-flex flex-wrap mt-3"
-        style={{ flexWrap: "wrap" }}
+         
       >
         {products.map((content) => (
           <ProductCard
