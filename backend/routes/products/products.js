@@ -9,6 +9,10 @@ const fetchSeller = require("../../middleware/fetchSeller");
 // creating products
 
 router.post("/product/create", fetchSeller, async (req, resp) => {
+
+  try {
+    
+ 
   // getting the selers information using middleware
 
   const sellerId = req.Seller;
@@ -50,11 +54,19 @@ router.post("/product/create", fetchSeller, async (req, resp) => {
     status: true,
     message: "Data successfully added",
   });
+} catch (error) {
+  console.log("Error Occured while adding  Product : ", error)
+
+}
 });
 
 // fetching products
 
 router.get("/product/:category", async (req, resp) => {
+
+  try {
+    
+ 
   //  getting all the information from the form
 
   category = req.params.category;
@@ -69,6 +81,10 @@ router.get("/product/:category", async (req, resp) => {
     resp.send("Unable to send the data to the server");
   }
   resp.json(data);
+} catch (error) {
+  console.log("Error Occured while fetching products  : ", error)
+
+}
 });
 // fetching all products
 
@@ -98,6 +114,9 @@ router.get("/seller/product/fetchall", fetchSeller, async (req, resp) => {
 
 // fetching product based on category
 router.get("/seller/products/:category", fetchSeller, async (req, resp) => {
+  try {
+    
+  
   //  getting all the information from the form
 
   category = req.params.category;
@@ -114,10 +133,15 @@ router.get("/seller/products/:category", fetchSeller, async (req, resp) => {
     resp.send("Unable to send the data to the server");
   }
   resp.json(data);
+} catch (error) {
+  console.log("Error Occured while fetching products by Category  : ", error)
+
+}
 });
 
 // deleting the products as per the seller id and product name
 router.delete("/seller/products/:pname", fetchSeller, async (req, resp) => {
+  try{
   //  getting all the information from the form
 
   pname = req.params.pname;
@@ -134,11 +158,19 @@ router.delete("/seller/products/:pname", fetchSeller, async (req, resp) => {
     resp.send("Unable to send the data to the server");
   }
   resp.json(data);
+} catch (error) {
+  console.log("Error Occured while fetching Seller Products  : ", error)
+
+}
 });
 
 // updating the products as per the seller id and product name
 router.put("/seller/products/:pname", fetchSeller, async (req, resp) => {
+  
   //  getting all the information from the form
+  try {
+    
+  
 
   pname = req.params.pname;
   const sellerId = req.Seller;
@@ -153,6 +185,10 @@ router.put("/seller/products/:pname", fetchSeller, async (req, resp) => {
     resp.send("Unable to send the data to the server");
   }
   resp.json(data);
+} catch (error) {
+  console.log("Error Occured while fetching product and the error is : ", error)
+    
+}
 });
 
 
