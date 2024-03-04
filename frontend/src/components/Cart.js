@@ -72,6 +72,7 @@ function Cart() {
         <div className="container-fluid">
           <div className="row">
             {/* Render Cart Elements */}
+
             <div className="col">
               <div className="container-fluid">
                 <p className="fs-3 text-center">
@@ -93,16 +94,7 @@ function Cart() {
                     >
                       <div className="row g-0">
                         <div className="col-md-3">
-                          <img
-                            src={cartElement.pimages}
-                            className="img-fluid rounded-start "
-                            alt="..."
-                            style={{
-                              maxWidth: "100%",
-                              maxHeight: "100%",
-                              borderRadius: "5%",
-                            }}
-                          />
+                          {/* there is the img tag  */}
                         </div>
                         <div className="col-md-8">
                           <div className="card-body">
@@ -149,23 +141,25 @@ function Cart() {
                 <div className="row g-0">
                   <div className="col-md-4">
                     <img
+                      align="left"
                       src={cartPhoto}
-                      className="img-fluid rounded-start"
+                      className="img-fluid rounded-start "
                       alt="..."
                       style={{
                         maxHeight: 500,
-                        maxWidth: 300,
+                        maxWidth: 320,
 
-                        display: "block",
-                        marginLeft: 0,
-                        marginRight: "auto",
-                        marginTop: "3rem",
+                        display: "grid",
+
+                        marginTop: "2rem",
                       }}
                     />
                   </div>
                   <div className="col-md-8  ">
                     <div className="card-body">
-                      <h5 className="card-title    fs-2 mx-5">Total Bill</h5>
+                      <h5 className="card-title mt-4   fs-2 mx-5">
+                        Total Bill
+                      </h5>
                     </div>
                     <p className="mx-5  fs-3">
                       Tottal Item{" "}
@@ -174,7 +168,7 @@ function Cart() {
                       </button>
                       <br></br>
                     </p>
-                    <p className="mx-5   fs-3">
+                    <p className="mx-5   fs-3 ">
                       Tottal Bill{" "}
                       <button className="btn-infos text-dark mx-2 ">
                         Rs {totalBill}
@@ -184,12 +178,6 @@ function Cart() {
                     <br />
                     <button className="btn-success display-2  fs-3 px-4 py-2 mx-5 mb-4">
                       Proceed to Checkout
-                    </button>
-                    <button
-                      className="btn-success display-2  fs-3 px-4 py-2 mx-5 mb-4"
-                      onClick={clickedOnButton}
-                    >
-                      Test Button
                     </button>
                   </div>
                 </div>
