@@ -8,7 +8,7 @@ app.use(cors({
   // origin: ["https://wizstore.vercel.app"],
  
     methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  // credentials: true
 }))
 
 // importing config files
