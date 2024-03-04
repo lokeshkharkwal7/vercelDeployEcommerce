@@ -4,8 +4,12 @@ router.use(express.json());
 const fetchUser = require("../../middleware/fetchUser")
 
 const CARTPRODUCTS  = require("../../model/cartItems")
+
+    
+
 // FOR ADDING THE CART PRODUCTS TO THE DATABASE 
 router.post("/cart/addproducts", async(req , res)=>{
+    try {
     const cartData = req.body
     const cartDataArray = Array(cartData)
     console.log("Data that we get from req.body is : ", cartData, "type is ", typeof cartDataArray)
@@ -22,12 +26,18 @@ router.post("/cart/addproducts", async(req , res)=>{
         status : true ,
         data : "Done Data updated to the server"
     })
+} catch (error) {
+    console.log("Error Occured while adding products to cart : ", error)
+
+}
 })
 
 
 // FOR DELETING THE PRODUCTS FROM THE CART DATABAS 
 router.delete("/cart/deleteproducts",async(req , res)=>{
-
+    try {
+        
+   
 
       
     const deletestatus = await CARTPRODUCTS.deleteMany({
@@ -44,6 +54,11 @@ router.delete("/cart/deleteproducts",async(req , res)=>{
         status : true ,
         data : "Done Data deleted from the server"
     })
+} catch (error) {
+    console.log("Error Occured while deleting products from the cart  : ", error)
+
+}
+
 })
 
 module.exports = router
@@ -52,7 +67,9 @@ module.exports = router
 
 // FOR DELETING ALL THE PRODUCTS FROM THE CART WITH THE SAME USERID
 router.delete("/cart/deleteproducts/emptycart",async(req , res)=>{
-
+    try {
+        
+   
 
       
     const deletestatus = await CARTPRODUCTS.deleteMany({
@@ -69,11 +86,19 @@ router.delete("/cart/deleteproducts/emptycart",async(req , res)=>{
         status : true ,
         data : "Done Data deleted from the server"
     })
+} catch (error) {
+    console.log("Error Occured while Emptying the Cart : ", error)
+
+}
+
 })
 
 
 // FOR FETCHING CART ITEMS BASED ON THE USER AUTH TOKEN 
 router.get("/cart/fetchproduct", fetchUser, async(req , res)=>{
+    try {
+        
+   
 
     //  req.user will be comming from the middleware 
     const userId = req.user
@@ -96,6 +121,10 @@ router.get("/cart/fetchproduct", fetchUser, async(req , res)=>{
         status : true,
         data : cartItems
      })
+    } catch (error) {
+        console.log("Error Occured while fetching cart products : ", error)
+
+    }
 })
 
 module.exports = router
