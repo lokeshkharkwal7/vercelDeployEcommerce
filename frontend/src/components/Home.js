@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { fetchProducts } from "../ProjectAPIS/fetchProduct";
-// importing products from sample api
-// import { products } from "../sampleapi/products";
 import ProductCard from "./ProductCard";
-// importing middleware
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../ProjectAPIS/fetchUser";
 import Navbar from "./Navbar";
 import { fetchCartProduct } from "../ProjectAPIS/fetchCart";
+import Loading from "./Loading";
 
 function Home({ category = "Electronics" }) {
   const dispatch = useDispatch();
-
   const authToken = localStorage.getItem("user_auth_token");
 
   console.log("User token get from the Login page is : ", authToken);
@@ -32,15 +29,17 @@ function Home({ category = "Electronics" }) {
       <Navbar />
       <br />
       <br />
+      {/* using loading */}
+      {products.length === 0 ? (
+        <div> <Loading /> </div>
+      ) : (
+        <div className="container-fluid fs-4 text-center bg-primary text-light mt-2">
+          <i className="fa-solid fa-layer-group fs-6 mx-2"></i>
+          {category}
+        </div>
+      )}
 
-      <div className="container-fluid fs-4 text-center bg-primary text-light mt-2">
-        <i className="fa-solid fa-layer-group fs-6 mx-2"></i>
-        {category}
-      </div>
-      <div
-        className="container-fluid d-flex flex-wrap mt-3"
-         
-      >
+      <div className="container-fluid d-flex flex-wrap mt-3">
         {products.map((content) => (
           <ProductCard
             key={content.pdescription}
