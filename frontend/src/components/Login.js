@@ -43,7 +43,7 @@ function Login() {
 
   let navigate = useNavigate();
 
-  const host = "https://vercel-deploy-ecommerce-backend.vercel.app";
+  const host = "http://localhost:4000";
 
   // AUTHENTICATING ADMIN
 
@@ -62,6 +62,7 @@ function Login() {
       });
 
       if (response) {
+        //changed
         const auth_token = await response.json(); // parses JSON response into native JavaScript objects
         console.log("response from the adminlogin is : ", auth_token);
         // changeAuthToken(auth_token);
@@ -150,11 +151,29 @@ function Login() {
   // creating an Onclick function which will fetch the api and will get us a authentication token
   return (
     <>
+      {/* A Navbar that is displaying the basic info of our website including logo and name
+       */}
+
+      {/* Image and text */}
+      <nav
+        className={
+          user === "customer"
+            ? `navbar navbar-dark  bg-${"primary"}`
+            : `navbar navbar-dark bg-${"danger"}`
+        }
+      >
+        <div className="navbar-brand" href="#">
+          <i className="fa-solid fa-store mx-1"></i>
+          Wiz Store- An Online Ecommerce Platform
+          <i className="fa-solid fa-wand-magic-sparkles mx-1"></i>
+        </div>
+      </nav>
+
       {user === "customer" ? (
-        <div className="container mt-5">
+        <div className="container-fluid mt-0 bg-primary text-light">
           <button
             type="button"
-            className="btn btn-danger float-end mt-2"
+            className="btn btn-light float-end mt-2"
             onClick={clickedAdmin}
           >
             I'm Admin <i class="fa-solid fa-user-tie mx-2"></i>
@@ -188,7 +207,7 @@ function Login() {
                       name="email"
                       id="email"
                     />
-                    <div id="emailHelp" className="form-text">
+                    <div id="emailHelp" className="form-text text-light">
                       We'll never share your email with anyone else.
                     </div>
                   </div>
@@ -232,7 +251,7 @@ function Login() {
       ) : (
         // if authentication user is Admin
 
-        <div className="container-fluid mt-5 bg-danger text-light ">
+        <div className="container-fluid mt-0 bg-danger text-light ">
           <button
             type="button"
             className="btn btn-round btn-light float-end mt-2"
@@ -297,7 +316,7 @@ function Login() {
                   </div>
                   <button
                     type="submit"
-                    className="btn btn-light mt-4"
+                    className="btn btn-danger mt-4"
                     onClick={onSubmitAdmin}
                   >
                     Submit
