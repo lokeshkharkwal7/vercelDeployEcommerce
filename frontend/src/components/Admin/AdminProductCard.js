@@ -20,17 +20,19 @@ function AdminProductCard({
           <div className="col-md-4">
             <img
               src={images}
-              className="img-fluid rounded-start opacity-50 mt-1 mx-1"
+              className="img-fluid rounded-start mt-1 mx-1"
               alt="..."
-              style={{ borderRadius: "5%" }}
+              style={{
+                borderRadius: "10%",
+                maxHeight: "8rem",
+                maxWidth: "10rem",
+              }}
             />
           </div>
           <div className="col-md-8">
             <div className="card-body">
               <h5 className="card-title">{name}</h5>
-              <p className="card-text  " style={{ fontSize: "1vw" }}>
-                {pdescription}
-              </p>
+              <p className="card-text  ">{pdescription}</p>
               <p className="card-text">
                 <small className="text-light">Rs {price}</small>
               </p>
