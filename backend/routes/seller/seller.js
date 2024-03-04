@@ -11,6 +11,10 @@ const fetchSeller = require("../../middleware/fetchSeller")
 // creating products 
 
 router.post("/seller/signup",async(req, resp)=>{
+
+  try {
+    
+ 
     //  getting all the information from the form 
 
     const {
@@ -38,12 +42,20 @@ router.post("/seller/signup",async(req, resp)=>{
     
     const token = jswt.sign({sellerId : data._id , status : true},secutritykey)
     resp.send(token)
+  } catch (error) {
+    console.log("Error Occured while sign up : ", error)
+    
+  }
 })
 
 
 // /AUTHENTICATING
 
 router.post("/seller/login", async (req, res) => {
+
+  try {
+    
+ 
   // getting data from the user
 
   const { semail, spassword } = req.body;
@@ -80,6 +92,9 @@ router.post("/seller/login", async (req, res) => {
   } else {
     res.send("Failed Please check credentials");
   }
+} catch (error) {
+    console.log("Error occured while Login ", error)
+}
 });
  
 
