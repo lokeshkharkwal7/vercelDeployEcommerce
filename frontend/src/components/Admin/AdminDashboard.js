@@ -50,7 +50,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="pname"
@@ -62,7 +62,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="number"
                 className="form-control text-dark"
                 id="pprice"
@@ -74,7 +74,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="pimages"
@@ -86,7 +86,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="pcategory"
@@ -98,7 +98,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="psubcategory"
@@ -110,7 +110,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="ptitle"
@@ -122,7 +122,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="pdescription"
@@ -134,7 +134,7 @@ function AdminDashboard() {
               </label>
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="text"
                 className="form-control text-dark"
                 id="porigin"
@@ -143,7 +143,7 @@ function AdminDashboard() {
             <div className="mb-3 form-check">
               <input
                 onChange={onChange}
-                style={{ maxWidth: "70%" }}
+                style={{ maxWidth: "100%" }}
                 type="checkbox"
                 className="form-check-input"
                 id="exampleCheck1"
@@ -169,9 +169,11 @@ function AdminDashboard() {
       </h1>
 
       <div className="container-fluid d-flex flex-wrap">
-        {sellerProducts.map((object) => {
+ 
+        {sellerProducts.map((object,index) => {
           return (
             <AdminProductCard
+              key = {object.pname + index}
               name={object.pname}
               images={object.pimages}
               price={object.pprice}
