@@ -59,7 +59,7 @@ function AdminProductEditCard({
     <div>
       <div
         className="card-fluid text-secondary bg-light mx-3 "
-        style={{ width: "20rem", height: "40rem" }}
+        style={{ width: "20rem"}}
       >
         <img src={pimages} className="card-img-top img-responsive" alt="..." />
         <div className="card-body">
