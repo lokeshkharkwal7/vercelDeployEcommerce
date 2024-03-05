@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { addDataToCartMongoDB } from "../ProjectAPIS/cartAddMongo";
 import { removeElementFromCartMongoDB } from "../ProjectAPIS/cartDeleteMongo";
 import Navbar from "./Navbar";
+import AlertMessage from "./AlertMessage";
 
 function ProductCard({
+  addToCartStatus,
+  
   pname,
   pprice,
   pimages,
@@ -21,8 +24,11 @@ function ProductCard({
   const cartdata = useSelector((state) => {
     return state.cartSlicerName; // THIS WILL GO DIRECTLY TO THE STORE AND RETURN THE STATE
   });
+   
   const navigate = useNavigate();
   const clickedAddtoCart = () => {
+    addToCartStatus(`${pname} added to Cart Successfully`)
+    
     // this function will add the info to the redux store which is made from cart and later we can view it on
     // another component
     const userdetailJSON = localStorage.getItem("userDataFromToken");
@@ -97,7 +103,8 @@ function ProductCard({
 
   return (
     <div>
-      <div className="card-fluid mx-3 my-2" style={{ width: "20rem" }}>
+      
+      <div className="card-fluid mx-3 my-2" style={{ width: "22rem" }}>
         <img
           src={pimages}
           className="card-img-top img-responsive"
@@ -123,6 +130,7 @@ function ProductCard({
           </button>
         </div>
       </div>
+        
     </div>
   );
 }
