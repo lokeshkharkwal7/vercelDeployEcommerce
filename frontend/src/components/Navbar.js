@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, json } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { fetchUser } from "../ProjectAPIS/fetchUser";
 import { deleteUserData } from "../redux/slicers/fetchUserInfo";
+import AlertMessage from "./AlertMessage";
+import { seachProductResultApiCall } from "../ProjectAPIS/searchProduct";
+import { searchDataText } from "../redux/slicers/searchProduct";
 
 function Navbar() {
   const categories = [
@@ -19,6 +22,8 @@ function Navbar() {
   //   return state.UserInfoSlicer; // this will get all the information about the users
   // });
   // const userInfo = userData[0];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userDataFromLocalStorageInJSONFormat =
     localStorage.getItem("userDataFromToken");
@@ -27,6 +32,8 @@ function Navbar() {
   const clickeduserinfo = () => {
     console.log("value of Users from the local storage are : ", userinfo.name);
   };
+
+  // showing alert that the user have successfully logged out
 
   const clickedLoggedOut = (params) => {
     localStorage.setItem("user_auth_token", null);
@@ -50,13 +57,26 @@ function Navbar() {
       return accumulator + Number(objects.pprice);
     }, 0)
     .toFixed(2); // here 0 is the initital value of the accumulator
-  // const authToken = localStorage.getItem("user_auth_token");
-  // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   fetchUser(authToken, dispatch);
-  //   console.log("Use Effect of app.js is called : ", authToken);
-  // }, []);
+  // if the use click on search button :
+  // getting text from the input field
+
+  const [searchText, setSearchText] = useState({});
+  const onChange = (e) => {
+    console.log("Clicked on change : ", e.target.value);
+    e.preventDefault();
+    setSearchText({ search: e.target.value });
+    console.log(searchText.search);
+  };
+
+  const clickedOnSearch = () => {
+    // making the api call that will store the data to the redux search state
+    seachProductResultApiCall(searchText.search, dispatch);
+    console.log("name in search is : ", searchText);
+    // storing the searched name in redux state
+    dispatch(searchDataText(searchText.search));
+  };
+
   return (
     <>
       <div>
@@ -125,9 +145,9 @@ function Navbar() {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="/spinner">
                         Something else here
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -143,6 +163,26 @@ function Navbar() {
                   {userinfo.name}{" "}
                 </Link>
               </button>
+
+              <form className="d-flex" role="search">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  onChange={onChange}
+                />
+                <Link
+                  className="btn btn-primary mx-2"
+                  style={{ backgroundColor: "#00008B" }}
+                  type="submit"
+                  onClick={clickedOnSearch}
+                  to="/products/searchResult"
+                >
+                  Search
+                </Link>
+              </form>
+
               <button className="btn btn-light">
                 {" "}
                 <i class="fa-solid fa-list"></i> {totalItem}{" "}

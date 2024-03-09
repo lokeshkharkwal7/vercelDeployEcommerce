@@ -4,6 +4,7 @@ import { FetchProductReducer } from "./slicers/fetchProductSlicer";
 import { cartSlicerRecucer } from "./slicers/cartSlicer";
 import { userInfoReducer } from "./slicers/fetchUserInfo";
 import { fetchProductSellerCategoryReducer } from "./slicers/fetchSellerProductsSlicer";
+import { storeSearchDataReducer } from "./slicers/searchProduct";
 export const store = configureStore(
   {
   reducer:  // all the reducer are
@@ -11,7 +12,9 @@ export const store = configureStore(
     fetchProductsSlicerName : FetchProductReducer ,  // CHANGED  fetchProductsSlicerName  fetchProducts
     cartSlicerName : cartSlicerRecucer,
     UserInfoSlicer: userInfoReducer,
-    fetchProductSellerCategoryName:fetchProductSellerCategoryReducer
+    fetchProductSellerCategoryName:fetchProductSellerCategoryReducer,
+    fetchSearchProductSlicer:storeSearchDataReducer,
+
 
     
     // Here the imported slicerFetchProduct is the actual slicer while the 

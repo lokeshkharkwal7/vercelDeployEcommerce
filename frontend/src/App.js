@@ -13,6 +13,8 @@ import AdminHome from "./components/Admin/AdminHome";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import AdminProducts from "./components/Admin/AdminProducts";
 import AdminEditProduct from "./components/Admin/AdminEditProduct";
+import Loading from "./components/Loading";
+import ShowSearchedData from "./components/ShowSearchedData";
 function App() {
   const categories = [
     "Electronics",
@@ -70,12 +72,32 @@ function App() {
                 path={`/seller/products/${category}`}
                 element={<AdminProducts category={`${category}`} />}
               />
+              
             );
           })}
 
           {/* Routes for edit products in admin page dashboard  */}
           <Route path={`/seller/products/toedit`} element={<AdminEditProduct/>
 } />
+
+{/* for testing  */}
+          {/* Routes for edit products in admin page dashboard  */}
+          <Route path={`/spinner`} element={<Loading/>
+} />
+ 
+
+ {/* for searching products */}
+
+ {/* For Admin Products  */}
+
+ 
+              <Route
+                path={`/products/searchResult`}
+                element={<ShowSearchedData />}
+              />
+              
+        
+         
 
 
         </Routes>
