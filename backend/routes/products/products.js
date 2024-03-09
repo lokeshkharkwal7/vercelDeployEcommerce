@@ -178,7 +178,7 @@ router.put("/seller/products/:pname", fetchSeller, async (req, resp) => {
 
 // Making the search api in mongoose
 // updating the products as per the seller id and product name
-router.post("/seller/products/search/:pname", async (req, resp) => {
+router.post("/user/products/search/:pname", async (req, resp) => {
   //  getting all the information from the form
   try {
     pname = req.params.pname;

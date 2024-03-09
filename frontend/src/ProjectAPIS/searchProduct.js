@@ -6,8 +6,8 @@ export const seachProductResultApiCall = async (pname, dispatch) => {
   console.log("Searched API Call");
   try {
     const response = await fetch(
-      `https://vercel-deploy-ecommerce-backend.vercel.app/product/${pname}`,
-      {
+      `https://vercel-deploy-ecommerce-backend.vercel.app/user/products/search/${pname}`,
+      {      
         method: "POST",
         headers: {
           "Content-Type": "application/json",
