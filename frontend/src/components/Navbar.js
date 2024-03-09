@@ -5,7 +5,7 @@ import { fetchUser } from "../ProjectAPIS/fetchUser";
 import { deleteUserData } from "../redux/slicers/fetchUserInfo";
 import AlertMessage from "./AlertMessage";
 import { seachProductResultApiCall } from "../ProjectAPIS/searchProduct";
-import { searchDataText } from "../redux/slicers/searchProduct";
+import { searchDataText, storeSearchData } from "../redux/slicers/searchProduct";
 
 function Navbar() {
   const categories = [
