@@ -70,7 +70,9 @@ function Navbar() {
   };
 
   const clickedOnSearch = () => {
-    // making the api call that will store the data to the redux search state
+     // resetting the redux state to empty after each click so that we can get no residue (problem solved)
+     dispatch(storeSearchData([]))
+     // making the api call that will store the data to the redux search state
     seachProductResultApiCall(searchText.search, dispatch);
     console.log("name in search is : ", searchText);
     // storing the searched name in redux state
