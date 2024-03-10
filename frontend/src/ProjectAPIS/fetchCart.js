@@ -7,7 +7,7 @@ export const fetchCartProduct = async (authToken, dispatch) => {
 
 
   try {
-    const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/cart/fetchproduct", {
+    const response = await fetch("http://localhost:4000/cart/fetchproduct", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -20,6 +20,10 @@ export const fetchCartProduct = async (authToken, dispatch) => {
 
     if (fetchhProducts.status === true) {
         console.log("Value of the data that is stored in the cart is : ", fetchhProducts)
+        // Removing the entire cart data 
+        emptytheCart()
+
+
         // USING USEDISPATCH TO DISPATCH THE INFORMATION TO REDUX STATE 
         // since the add to cart takes object but here we are returning the array of objects so using loops to add data dynamically 
         for (let product of fetchhProducts.data){

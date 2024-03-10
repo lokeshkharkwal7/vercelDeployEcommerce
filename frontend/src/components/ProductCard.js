@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/slicers/cartSlicer";
 import { useNavigate } from "react-router-dom";
 import { addDataToCartMongoDB } from "../ProjectAPIS/cartAddMongo";
-import { removeElementFromCartMongoDB } from "../ProjectAPIS/cartDeleteMongo";
+import removeElementFromCartMongoDB from "../ProjectAPIS/cartDeleteMongo";
 import Navbar from "./Navbar";
 import AlertMessage from "./AlertMessage";
 
 function ProductCard({
   addToCartStatus,
-  
+
   pname,
   pprice,
   pimages,
@@ -24,11 +24,12 @@ function ProductCard({
   const cartdata = useSelector((state) => {
     return state.cartSlicerName; // THIS WILL GO DIRECTLY TO THE STORE AND RETURN THE STATE
   });
-   
+
   const navigate = useNavigate();
   const clickedAddtoCart = () => {
-    addToCartStatus(`${pname} added to Cart Successfully`)
-    
+    // showing alert message when item is inside the cart
+    addToCartStatus(`${pname} added to Cart Successfully`);
+
     // this function will add the info to the redux store which is made from cart and later we can view it on
     // another component
     const userdetailJSON = localStorage.getItem("userDataFromToken");
@@ -61,7 +62,10 @@ function ProductCard({
         //  CALLING removeFromCart AND PASS THE DESCRIPTION
         dispatch(removeFromCart(cartItems.pdescription));
         //REMOVING FROM MONGODB ITESELF
-        // removeElementFromCartMongoDB(cartItems.pdescription)
+
+        // # uncommenting the following line 
+        removeElementFromCartMongoDB(cartItems.pdescription)
+        
 
         cartItems.punits = cartdata[i].punits + 1;
         //  got an error punit 2 so fixing it dynamically
@@ -78,8 +82,9 @@ function ProductCard({
         //  ADDING DATA TO REDUX STORE
         dispatch(addToCart(cartItems));
         // ADDING DATA TO MONGO DB
-        // let datatoMongo = [cartItems]
-        // addDataToCartMongoDB(datatoMongo[0])
+        // # uncommented the line 83 and 84
+        let datatoMongo = [cartItems];
+        addDataToCartMongoDB(datatoMongo[0]);
 
         processcompleted = 1;
         break;
@@ -90,8 +95,9 @@ function ProductCard({
     if (processcompleted === 0) {
       dispatch(addToCart(cartItems)); // ADDING THE CART DATA TO THE ACTION
       // ADDING CART DATA TO MONGO DB
-      // let datatoMongo = [cartItems]
-      // addDataToCartMongoDB(datatoMongo[0])
+      // # uncommented the following code  2 lines
+      let datatoMongo = [cartItems];
+      addDataToCartMongoDB(datatoMongo[0]);
     }
 
     console.log("Data inside the cart is : ", cartdata);
@@ -103,8 +109,7 @@ function ProductCard({
 
   return (
     <div>
-      
-      <div className="card-fluid mx-3 my-2" style={{ width: "20rem" }}>
+      <div className="card-fluid mx-3 my-2" style={{ width: "22rem" }}>
         <img
           src={pimages}
           className="card-img-top img-responsive"
@@ -130,7 +135,6 @@ function ProductCard({
           </button>
         </div>
       </div>
-        
     </div>
   );
 }

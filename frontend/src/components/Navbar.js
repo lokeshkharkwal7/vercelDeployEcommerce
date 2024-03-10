@@ -5,7 +5,10 @@ import { fetchUser } from "../ProjectAPIS/fetchUser";
 import { deleteUserData } from "../redux/slicers/fetchUserInfo";
 import AlertMessage from "./AlertMessage";
 import { seachProductResultApiCall } from "../ProjectAPIS/searchProduct";
-import { searchDataText, storeSearchData } from "../redux/slicers/searchProduct";
+import {
+  searchDataText,
+  storeSearchData,
+} from "../redux/slicers/searchProduct";
 
 function Navbar() {
   const categories = [
@@ -70,9 +73,9 @@ function Navbar() {
   };
 
   const clickedOnSearch = () => {
-     // resetting the redux state to empty after each click so that we can get no residue (problem solved)
-     dispatch(storeSearchData([]))
-     // making the api call that will store the data to the redux search state
+    // making the api call that will store the data to the redux search state
+    // resetting the redux state to empty after each click so that we can get no residue
+    dispatch(storeSearchData([]));
     seachProductResultApiCall(searchText.search, dispatch);
     console.log("name in search is : ", searchText);
     // storing the searched name in redux state
@@ -154,6 +157,27 @@ function Navbar() {
                   </ul>
                 </li>
               </ul>
+
+              <form className="d-flex justify-content-start" role="search">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  onChange={onChange}
+                  style={{ width: "300px" }}
+                />
+                <Link
+                  className="btn btn-light mx-2"
+                  style={{ borderRadius: "10%" }}
+                  type="submit"
+                  onClick={clickedOnSearch}
+                  to="/products/searchResult"
+                >
+                  Search
+                </Link>
+              </form>
+
               <button
                 className="btn btn-primary mx-3"
                 onClick={clickeduserinfo}
@@ -165,25 +189,6 @@ function Navbar() {
                   {userinfo.name}{" "}
                 </Link>
               </button>
-
-              <form className="d-flex" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  onChange={onChange}
-                />
-                <Link
-                  className="btn btn-primary mx-2"
-                  style={{ backgroundColor: "#00008B" }}
-                  type="submit"
-                  onClick={clickedOnSearch}
-                  to="/products/searchResult"
-                >
-                  Search
-                </Link>
-              </form>
 
               <button className="btn btn-light">
                 {" "}
