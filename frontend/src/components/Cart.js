@@ -15,12 +15,12 @@ function Cart() {
   });
   // MAKING THE CART EMPTY IN THE DATABASE
   const userdetailJSON = localStorage.getItem("userDataFromToken");
-  const authToken = localStorage.getItem("user_auth_token")
+  const authToken = localStorage.getItem("user_auth_token");
   const userinfo = JSON.parse(userdetailJSON);
-  // # changes made  
+  // # changes made
   // cartDeleteEverything(userinfo._id);  (Commented this line)
   // THIS FUNCTION WILL ADD ALL THE INFORMATION OF THE CURRENT REDUX STATE OF CART TO MONGODB SERVER
-  // addDataToCartMongoDB(cartElements);  (Commented this line )  
+  // addDataToCartMongoDB(cartElements);  (Commented this line )
 
   const clickedOnButton = () => {
     console.log("Cart array is : ", cartElements);
@@ -62,23 +62,19 @@ function Cart() {
     console.log("Value of the pdescription is : ", pdescription);
   };
 
- 
+  useEffect(() => {
+    // getting the data of the cart from the mongo db
 
-  useEffect(()=>{
-    // getting the data of the cart from the mongo db 
+    fetchCartProduct(authToken, dispatch);
 
-    fetchCartProduct(authToken, dispatch)
-
-
-    // saving the info to the redux state 
-
-  },[])
+    // saving the info to the redux state
+  }, []);
 
   return (
     <>
       {" "}
       <Navbar />
-      <div className="container-fluid mt-5 bg-primary text-light">
+      <div className="container-fluid mt-5 bg-primary text-light overflow-auto">
         <br />
         <p className="fs-2 text-center ">
           Shopping Cart <i className="fa-solid fa-cart-shopping"></i>{" "}
@@ -96,7 +92,7 @@ function Cart() {
                 {cartElements.map((cartElement) => (
                   <div
                     key={cartElement.pdescription} // Ensure each element has a unique key
-                    className="container-fluid text-dark px-2"
+                    className="overflow-auto container-fluid text-dark px-2"
                     style={{ fontSize: "small" }}
                   >
                     <div
@@ -121,7 +117,7 @@ function Cart() {
                             <p className="card-title">
                               {cartElement.ptitle}
                               <button
-                                className="btn btn-danger  mx-4"
+                                className="btn-fluid btn-danger  mx-4"
                                 onClick={() => {
                                   clickedRemoveFromCart(
                                     cartElement.pdescription

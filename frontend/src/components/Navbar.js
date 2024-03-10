@@ -41,9 +41,7 @@ function Navbar() {
   const clickedLoggedOut = (params) => {
     localStorage.setItem("user_auth_token", null);
 
-    console.log(
-      "After logged out and deletion the value of the slicer initial is : "
-    );
+     
   };
   // FOR THE CART BUTTON ONLY
   const cartElements = useSelector((state) => {
@@ -66,10 +64,10 @@ function Navbar() {
 
   const [searchText, setSearchText] = useState({});
   const onChange = (e) => {
-    console.log("Clicked on change : ", e.target.value);
+     
     e.preventDefault();
     setSearchText({ search: e.target.value });
-    console.log(searchText.search);
+    
   };
 
   const clickedOnSearch = () => {

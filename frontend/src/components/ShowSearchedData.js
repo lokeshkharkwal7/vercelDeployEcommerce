@@ -48,7 +48,8 @@ function ShowSearchedData() {
         {" "}
         <p className="mx-1">
           <i className="fa-solid fa-list mx-3"></i>
-          Results for {searchedText} Total : {searchResultArray.length}
+          {/* logic that will show 0 if no element found otherwise will show length of total product  */}
+          Results for {searchedText} Total : {searchResultArray[0]===false ? ("0") : (searchResultArray.length)}
         </p>
       </h2>
 
