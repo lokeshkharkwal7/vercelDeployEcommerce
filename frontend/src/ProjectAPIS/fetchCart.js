@@ -7,7 +7,7 @@ export const fetchCartProduct = async (authToken, dispatch) => {
 
 
   try {
-    const response = await fetch("http://localhost:4000/cart/fetchproduct", {
+    const response = await fetch("https://vercel-deploy-ecommerce-backend.vercel.app/cart/fetchproduct", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
