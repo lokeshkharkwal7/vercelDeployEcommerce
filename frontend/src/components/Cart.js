@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cartPhoto from "../photos/cart.png";
 import { removeFromCart } from "../redux/slicers/cartSlicer";
@@ -6,6 +6,7 @@ import { addDataToCartMongoDB } from "../ProjectAPIS/cartAddMongo.js";
 import Navbar from "./Navbar";
 import { cartDeleteEverything } from "../ProjectAPIS/cartDeleteEverything.js";
 import removeElementFromCartMongoDB from "../ProjectAPIS/cartDeleteMongo.js";
+import { fetchCartProduct } from "../ProjectAPIS/fetchCart.js";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -14,10 +15,12 @@ function Cart() {
   });
   // MAKING THE CART EMPTY IN THE DATABASE
   const userdetailJSON = localStorage.getItem("userDataFromToken");
+  const authToken = localStorage.getItem("user_auth_token")
   const userinfo = JSON.parse(userdetailJSON);
-  cartDeleteEverything(userinfo._id);
+  // # changes made  
+  // cartDeleteEverything(userinfo._id);  (Commented this line)
   // THIS FUNCTION WILL ADD ALL THE INFORMATION OF THE CURRENT REDUX STATE OF CART TO MONGODB SERVER
-  addDataToCartMongoDB(cartElements);
+  // addDataToCartMongoDB(cartElements);  (Commented this line )  
 
   const clickedOnButton = () => {
     console.log("Cart array is : ", cartElements);
@@ -58,6 +61,18 @@ function Cart() {
     console.log("Eement after deletion from the cart : ", cartElements);
     console.log("Value of the pdescription is : ", pdescription);
   };
+
+ 
+
+  useEffect(()=>{
+    // getting the data of the cart from the mongo db 
+
+    fetchCartProduct(authToken, dispatch)
+
+
+    // saving the info to the redux state 
+
+  },[])
 
   return (
     <>
