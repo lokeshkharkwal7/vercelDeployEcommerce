@@ -44,10 +44,13 @@ function ShowSearchedData() {
         </div>
       )}
 
-      <h1 className="display-1 fs-1 mt-5 mb-3 text-center">
+      <h2 className="display-1  fs-1 mt-5 mb-3 text-center text-secondary">
         {" "}
-        Results for {searchedText}
-      </h1>
+        <p className="mx-1">
+          <i className="fa-solid fa-list mx-3"></i>
+          Results for {searchedText} Total : {searchResultArray.length}
+        </p>
+      </h2>
 
       {searchResultArray.length === 0 ? (
         <div className="container-fluid">
@@ -57,8 +60,7 @@ function ShowSearchedData() {
         <h1 className="display-1 fs-2 text-primary">Sorry No Product Found </h1>
       ) : (
         <div className="d-flex flex-wrap">
-        {searchResultArray.map((result) => (
-          
+          {searchResultArray.map((result) => (
             <ProductCard
               key={result.pdescription}
               addToCartStatus={getAddToCartStatus}
@@ -72,8 +74,7 @@ function ShowSearchedData() {
               porigin={result.porigin}
               punits={1}
             />
-           
-        ))}
+          ))}
         </div>
       )}
     </div>

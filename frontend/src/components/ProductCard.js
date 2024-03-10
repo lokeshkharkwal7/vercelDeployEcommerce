@@ -63,9 +63,8 @@ function ProductCard({
         dispatch(removeFromCart(cartItems.pdescription));
         //REMOVING FROM MONGODB ITESELF
 
-        // # uncommenting the following line 
-        removeElementFromCartMongoDB(cartItems.pdescription)
-        
+        // # uncommenting the following line
+        removeElementFromCartMongoDB(cartItems.pdescription);
 
         cartItems.punits = cartdata[i].punits + 1;
         //  got an error punit 2 so fixing it dynamically
@@ -109,7 +108,17 @@ function ProductCard({
 
   return (
     <div>
-      <div className="card-fluid mx-3 my-2" style={{ width: "22rem" }}>
+      <style>
+        {`
+          .fs-6 {
+            font-size: 0.9rem !important;
+          } 
+          .fs-5 {
+            font-size: 1.2rem !important;
+          }
+        `}
+      </style>
+      <div className="card-fluid mx-3 my-2" style={{ width: "18rem" }}>
         <img
           src={pimages}
           className="card-img-top img-responsive"
@@ -118,14 +127,21 @@ function ProductCard({
           // style={{ width: "17vw", height: "35vh", borderRadius: "1%" }}
         />
         <div className="card-body">
-          <h5 className="container-fluid  card-title    fs-5">{pname}</h5>
+          <h5 className="container-fluid  card-title text-left   fs-5">
+            {pname}
+          </h5>
 
           <h5 className="card-title  fs-6">{ptitle}</h5>
-          <p className="card-text fs-6 text-secondary  ">{pdescription}</p>
+          <p
+            className="card-text fs-6 text-secondary "
+            style={{ fontSize: "7rem" }}
+          >
+            {pdescription}
+          </p>
           <p className="card-text fs-6">Category {pcategory}</p>
           {/* <p className="card-text fs-6">Product Origin {porigin}</p> */}
 
-          <div className="btn btn-primary">
+          <div className="btn btn-primary" onClick={clickedAddtoCart}>
             Rs {"  "}
             {pprice}
           </div>
